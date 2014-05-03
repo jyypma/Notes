@@ -38,7 +38,9 @@ local({r <- getOption("repos")
 #    fortunes::fortune()
 ###########################################################
 
-6. From within R: update.packages( ask=FALSE )
+6. Change properties of shortcut to Rgui.exe on the desktop. Add --no-save --no-restore to Rgui.exe in the target field on the shortcut tab.
 
-7. To remove warnings when compiling under Windows using Rtools:
+7. From within R: update.packages( ask=FALSE )
+
+8. To remove warnings when compiling under Windows using Rtools:
 Under system variables, click on New, set variable name to CYGWIN and set value as nodosfilewarning and you're done.
