@@ -1,0 +1,44 @@
+This file shows the steps to take when installing a new version of R. Having the libraries in a separate directory, makes it easy to update to a new version, without loosing all your packages. After installing the new version of R you have to update.packages() to get the latest versions of the user-contributed packages in your library directory.
+
+1. Create the following directory structure
+c:/tools/R/library
+c:/tools/R/R-2.14.2
+c:/tools/R/Rtools
+
+2. Download R and Rtools from www.r-project.org
+
+3. Install R
+
+4. Install Rtools (and change environment variables; Path)
+
+5. Create/edit file R-2.14.2/etc/Rprofile.site:
+###########################################################
+# Things you might want to change
+
+# options(papersize="a4")
+# options(editor="notepad")
+# options(pager="internal")
+
+# set the default help type
+# options(help_type="text")
+  options(help_type="html")
+
+# set a site library
+.Library.site <- "c:/tools/R/library"
+.libPaths( .Library.site )
+
+# set a CRAN mirror
+local({r <- getOption("repos")
+       r["CRAN"] <- "http://cran.r-project.org"
+       options(repos=r)})
+
+# Give a fortune cookie, but only to interactive sessions
+# (This would need the fortunes package to be installed.)
+#  if (interactive()) 
+#    fortunes::fortune()
+###########################################################
+
+6. From within R: update.packages( ask=FALSE )
+
+7. To remove warnings when compiling under Windows using Rtools:
+Under system variables, click on New, set variable name to CYGWIN and set value as nodosfilewarning and you're done.
